@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margem_padrao"
+    tools:context=".ui.pedido.PedidoFragment">
+
+    <TextView
+        android:id="@+id/textViewRotuloItemPedido"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/altura_padrao"
+        android:gravity="center"
+        android:text="@string/lbl_selecionar_item_produto"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewItemPedido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewItemPedido"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonAvancarPedido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewRotuloItemPedido"
+        tools:listitem="@layout/list_item_item_pedido" />
+
+    <Button
+        android:id="@+id/buttonAvancarPedido"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_heigh"
+        android:text="@string/lbl_continuar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

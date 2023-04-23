@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margem_padrao">16dp</dimen>
+    <dimen name="margem_padrao_media">8dp</dimen>
+    <dimen name="altura_padrao">48dp</dimen>
+    <dimen name="raio_padrao">12dp</dimen>
+    <dimen name="button_heigh">48dp</dimen>
+</resources>
