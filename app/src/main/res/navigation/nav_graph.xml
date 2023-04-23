@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="br.pucminas.puccafe.ui.main.MainFragment"
+        android:label="PUC Minas Café"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_pedidoFragment"
+            app:destination="@id/pedidoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true"
+            app:popUpToSaveState="true"
+            app:restoreState="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="br.pucminas.puccafe.ui.pedido.PedidoFragment"
+        android:label="Faça seu pedido"
+        tools:layout="@layout/fragment_pedido">
+        <argument
+            android:name="nome"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pedidoFragment_to_resumoFragment"
+            app:destination="@id/resumoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumoFragment"
+        android:name="br.pucminas.puccafe.ui.resumo.ResumoFragment"
+        android:label="Está tudo OK?"
+        tools:layout="@layout/fragment_resumo">
+        <action
+            android:id="@+id/action_resumoFragment_to_encerramentoFragment"
+            app:destination="@id/encerramentoFragment" />
+        <argument
+            android:name="produtos"
+            app:argType="br.pucminas.puccafe.domain.Produto[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/encerramentoFragment"
+        android:name="br.pucminas.puccafe.ui.encerramento.EncerramentoFragment"
+        android:label="Obrigado!"
+        tools:layout="@layout/fragment_encerramento" />
+</navigation>

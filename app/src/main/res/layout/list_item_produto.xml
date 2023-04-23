@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margem_padrao_media"
+    app:cardCornerRadius="@dimen/raio_padrao">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margem_padrao_media">
+
+        <TextView
+            android:id="@+id/textViewNomeProduto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/textViewQuantidadeProduto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mokka" />
+
+        <TextView
+            android:id="@+id/textViewQuantidadeProduto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            app:layout_constraintBottom_toTopOf="@id/textViewValorUnitario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewNomeProduto"
+            tools:text="Quantidade: 5" />
+
+        <TextView
+            android:id="@+id/textViewValorUnitario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            app:layout_constraintBottom_toTopOf="@id/textViewValorTotal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewQuantidadeProduto"
+            tools:text="Total: R$ 5,00" />
+
+        <TextView
+            android:id="@+id/textViewValorTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewQuantidadeProduto"
+            tools:text="Total: R$ 15,00" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
