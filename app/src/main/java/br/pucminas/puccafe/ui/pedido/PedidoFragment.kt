@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.pucminas.puccafe.R
+import br.pucminas.puccafe.data.ProdutoRepositorio
 import br.pucminas.puccafe.databinding.FragmentPedidoBinding
 import br.pucminas.puccafe.domain.Produto
 import br.pucminas.puccafe.ui.util.Brazil
@@ -22,7 +22,7 @@ class PedidoFragment : Fragment() {
 
     private var _binding: FragmentPedidoBinding? = null
     private val binding get() = _binding!!
-    private val produtoViewModel: PedidoViewModel by viewModels()
+    private lateinit var pedidoViewModel: PedidoViewModel
     private lateinit var nome: String
     private lateinit var adapter: ProdutosAdapter
 
@@ -33,7 +33,8 @@ class PedidoFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPedidoBinding.inflate(inflater, container, false)
-        produtoViewModel.carregarProdutos()
+        pedidoViewModel = PedidoViewModel(ProdutoRepositorio())
+        pedidoViewModel.carregarProdutos()
         return binding.root
     }
 
@@ -65,13 +66,13 @@ class PedidoFragment : Fragment() {
 
     private fun configurarBtnContinuarListener() {
         binding.buttonAvancarPedido.setOnClickListener {
-            produtoViewModel.confirmarPedido()
+            pedidoViewModel.confirmarPedido()
         }
     }
 
     private fun prepararObservers() {
         configurarObserverListaProdutos()
-        produtoViewModel.fecharPedidoLista.observe(viewLifecycleOwner) {
+        pedidoViewModel.fecharPedidoLista.observe(viewLifecycleOwner) {
             avancarProximaTela(it)
         }
     }
@@ -83,7 +84,7 @@ class PedidoFragment : Fragment() {
     }
 
     private fun configurarObserverListaProdutos() {
-        produtoViewModel.listaProdutos.observe(viewLifecycleOwner) {
+        pedidoViewModel.listaProdutos.observe(viewLifecycleOwner) {
             exibirListaProdutos(it)
         }
     }
@@ -108,11 +109,11 @@ class PedidoFragment : Fragment() {
     }
 
     private fun aumentarQuantidade(produto: Produto) {
-        adapter.atualizarListaProdutos(produtoViewModel.aumentarQuantidade(produto))
+        adapter.atualizarListaProdutos(pedidoViewModel.aumentarQuantidade(produto))
     }
 
     private fun reduzirQuantidade(produto: Produto) {
-        produtoViewModel.reduzirQuantidade(produto)
-        adapter.atualizarListaProdutos(produtoViewModel.listaProdutos.value!!)
+        pedidoViewModel.reduzirQuantidade(produto)
+        adapter.atualizarListaProdutos(pedidoViewModel.listaProdutos.value!!)
     }
 }

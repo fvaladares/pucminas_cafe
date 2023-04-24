@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import br.pucminas.puccafe.data.ProdutoRepositorio
 import br.pucminas.puccafe.domain.Produto
 
-class PedidoViewModel : ViewModel() {
+class PedidoViewModel(val produtoRepositorio: ProdutoRepositorio) : ViewModel() {
     private val _listaProdutos = MutableLiveData<MutableList<Produto>>()
     val listaProdutos: LiveData<MutableList<Produto>> = _listaProdutos
     private val _fecharPedidosLista = MutableLiveData<List<Produto>>()
@@ -17,7 +17,7 @@ class PedidoViewModel : ViewModel() {
 
     fun carregarProdutos() {
         if (_listaProdutos.value.isNullOrEmpty())
-            _listaProdutos.value = ProdutoRepositorio().getProdutos()
+            _listaProdutos.value = produtoRepositorio.getProdutos()
     }
 
     fun aumentarQuantidade(produto: Produto): MutableList<Produto> {
