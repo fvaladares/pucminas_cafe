@@ -20,14 +20,13 @@ class PedidoViewModel(val produtoRepositorio: ProdutoRepositorio) : ViewModel() 
             _listaProdutos.value = produtoRepositorio.getProdutos()
     }
 
-    fun aumentarQuantidade(produto: Produto): MutableList<Produto> {
+    fun aumentarQuantidade(produto: Produto) {
         _listaProdutos.value!!.find { it.id == produto.id }!!.apply {
-            quantidade += 1
+            quantidade += 2
             selecionado = true
         }
 
         Log.d("PUCMG", _listaProdutos.value.toString())
-        return _listaProdutos.value!!
     }
 
     fun reduzirQuantidade(produto: Produto) {
