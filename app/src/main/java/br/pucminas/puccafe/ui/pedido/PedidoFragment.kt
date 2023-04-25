@@ -109,7 +109,8 @@ class PedidoFragment : Fragment() {
     }
 
     private fun aumentarQuantidade(produto: Produto) {
-        adapter.atualizarListaProdutos(pedidoViewModel.aumentarQuantidade(produto))
+        pedidoViewModel.aumentarQuantidade(produto)
+        adapter.atualizarListaProdutos(pedidoViewModel.listaProdutos.value!!)
     }
 
     private fun reduzirQuantidade(produto: Produto) {
