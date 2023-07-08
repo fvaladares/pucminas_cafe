@@ -22,7 +22,7 @@ class PedidoViewModel(val produtoRepositorio: ProdutoRepositorio) : ViewModel() 
 
     fun aumentarQuantidade(produto: Produto) {
         _listaProdutos.value!!.find { it.id == produto.id }!!.apply {
-            quantidade += 2
+            quantidade += 1
             selecionado = true
         }
 
